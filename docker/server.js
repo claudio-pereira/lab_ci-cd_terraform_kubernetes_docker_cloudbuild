@@ -3,17 +3,17 @@ const os = require('os');
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Informacoes do Host</h1>');
-  res.write(`<p>Nome do Host: ${os.hostname()}</p>`);
-  res.write(`<p>Endereco IP: ${getIpAddress()}</p>`);
-  res.write(`<p>Hora do Host: ${getCurrentTime()}</p>`);
+  res.write('<h1>Informações do Pod Kubernetes</h1>');
+  res.write(`<p>Nome do Pod: ${process.env.HOSTNAME}</p>`);
+  res.write(`<p>Endereço IP do Pod: ${getPodIpAddress()}</p>`);
+  res.write(`<p>Hora do Servidor: ${getCurrentTime()}</p>`);
   res.end();
 });
 
-function getIpAddress() {
-  const interfaces = os.networkInterfaces();
-  for (const ifaceName in interfaces) {
-    const iface = interfaces[ifaceName];
+function getPodIpAddress() {
+  const networkInterfaces = os.networkInterfaces();
+  const iface = networkInterfaces['eth0'] || networkInterfaces['eth1'] || networkInterfaces['eth2'];
+  if (iface) {
     for (const alias of iface) {
       if (alias.family === 'IPv4' && !alias.internal) {
         return alias.address;
@@ -29,7 +29,6 @@ function getCurrentTime() {
 }
 
 const port = 8080;
-const HOST = '0.0.0.0';
 server.listen(port, () => {
-  console.log(`Servidor está rodando em http://${HOST}:${port}`);
+  console.log(`Servidor está rodando na porta ${port}`);
 });
