@@ -28,7 +28,7 @@ function getCurrentTime() {
   return now.toLocaleString();
 }
 
-const port = 3000;
+const port = 8080;
 server.listen(port, () => {
   console.log(`Servidor está rodando em http://localhost:${port}`);
 });
