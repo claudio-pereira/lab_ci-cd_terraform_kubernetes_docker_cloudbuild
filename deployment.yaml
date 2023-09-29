@@ -28,7 +28,7 @@ spec:
         app: info
     spec:
       containers:
-      - name: info-app
+      - name: info-host
         # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
         # Replace $GCLOUD_PROJECT with your project ID.
         image: us-west1-docker.pkg.dev/lab01-400515/lab01-repo/info-host:1.0
