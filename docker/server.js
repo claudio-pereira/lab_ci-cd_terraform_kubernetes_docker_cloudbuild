@@ -3,9 +3,9 @@ const os = require('os');
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Informações do Host</h1>');
+  res.write('<h1>Informacoes do Host</h1>');
   res.write(`<p>Nome do Host: ${os.hostname()}</p>`);
-  res.write(`<p>Endereço IP: ${getIpAddress()}</p>`);
+  res.write(`<p>Endereco IP: ${getIpAddress()}</p>`);
   res.write(`<p>Hora do Host: ${getCurrentTime()}</p>`);
   res.end();
 });
