@@ -21,11 +21,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: infos
+      app: info-host
   template:
     metadata:
       labels:
-        app: infos
+        app: info-host
     spec:
       containers:
       - name: infohost-app
