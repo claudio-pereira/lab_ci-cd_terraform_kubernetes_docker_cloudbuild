@@ -5,11 +5,15 @@ steps:
   # Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-west1-docker.pkg.dev/lab01-400515/lab01-repo/info-host:1.0']
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['rollout', 'restart', 'deployment', 'helloworld-gke']
-    env:
-      - CLOUDSDK_CONTAINER_CLUSTER=lab01
-      - CLOUDSDK_COMPUTE_ZONE=us-west1-a
-      - CLOUDSDK_COMPUTE_REGION=us-west1
+  # Deploy to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'meuapp'
+      - '--image=us-west1-docker.pkg.dev/lab01-400515/lab01-repo/info-host:1.0'
+      - '--platform=managed'
+      - '--region=us-west1'
+      - '--allow-unauthenticated'
 options:
   logging: CLOUD_LOGGING_ONLY
