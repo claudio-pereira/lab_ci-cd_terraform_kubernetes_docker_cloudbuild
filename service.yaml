@@ -18,7 +18,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: info_host
+  name: info-host
 spec:
   type: LoadBalancer
   selector:
