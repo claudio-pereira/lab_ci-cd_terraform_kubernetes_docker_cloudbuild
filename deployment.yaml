@@ -16,19 +16,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: info_host
+  name: info-host
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: info_host
+      app: hello
   template:
     metadata:
       labels:
-        app: info_host
+        app: hello
     spec:
       containers:
-      - name: serv-app
+      - name: hello-app
         # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
         # Replace $GCLOUD_PROJECT with your project ID.
         image: us-west1-docker.pkg.dev/lab01-400515/lab01-repo/info-host:1.0
