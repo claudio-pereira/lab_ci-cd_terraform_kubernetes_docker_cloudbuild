@@ -6,7 +6,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-west1-docker.pkg.dev/lab01-400515/lab01-repo/info-host:1.0']
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['rollout', 'restart', 'deployment', 'info-host']
+    args: ['rollout', 'restart', 'deployment', 'info_host']
     env:
       - CLOUDSDK_CONTAINER_CLUSTER=lab01
       - CLOUDSDK_COMPUTE_ZONE=us-west1-a

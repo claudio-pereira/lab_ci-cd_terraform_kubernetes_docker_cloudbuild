@@ -16,28 +16,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: info-host
+  name: info_host
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: info-host
+      app: info_host
   template:
     metadata:
       labels:
-        app: info-host
+        app: info_host
     spec:
       containers:
-      - name: infohost-app
+      - name: serv-app
         # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
         # Replace $GCLOUD_PROJECT with your project ID.
         image: us-west1-docker.pkg.dev/lab01-400515/lab01-repo/info-host:1.0
         # This app listens on port 8080 for web traffic by default.
         ports:
-        - containerPort: 3000
+        - containerPort: 30000
         env:
           - name: PORT
-            value: "3000"
+            value: "30000"
         resources:
           requests:
             memory: "1Gi"
